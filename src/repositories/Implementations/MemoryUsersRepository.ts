@@ -1,8 +1,8 @@
 import { User } from "../../entities/User";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { IUserRepository } from "../IUserRepository";
 
 // Fake repository!! It doesn't use a postgress database. We're just saving data in a users variable
-export class PostgressUsersRepository implements IUserRepository {
+export class MemoryUsersRepository implements IUserRepository {
     private users: User[] = [];
 
     async findByEmail(email: string): Promise<User> {
@@ -11,5 +11,9 @@ export class PostgressUsersRepository implements IUserRepository {
 
     async save(user: User): Promise<void> {
         this.users.push(user);
+    }
+
+    async listUsers(): Promise<User[]> {
+        return this.users;
     }
 }
