@@ -1,4 +1,4 @@
-import { uuid } from "uuidv4";
+import uuid from "react-uuid";
 
 export class User {
     public readonly id: string;
@@ -15,7 +15,7 @@ export class User {
         * this.password = props.password;
         * */
 
-        if(!id) {
+        if (!id) {
             this.id = uuid();
         }
     }
